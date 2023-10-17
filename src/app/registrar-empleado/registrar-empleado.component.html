@@ -1,0 +1,41 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registro de empleado</h3>
+    <form (ngSubmit)="onSubmit()" #empleadoForm="ngForm">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="empleado.nombre" name="nombre" required="true" placeholder="Digite su nombre" minlength="4" maxlength="10" #nombre="ngModel">
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="['nombre.errors.required']">
+                    Digite su nombre por favor
+                </div>
+                <div *ngIf="['nombre.errors.minlength']">
+                    Nombre min lenght 4
+                </div>
+                <div *ngIf="['nombre.errors.maxlength']">
+                    Nombre max lenght 10
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" class="form-control" id="apellido" [(ngModel)]="empleado.apellido" name="apellido">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="empleado.email" name="email" required="true" placeholder="Digite su email" minlength="4" maxlength="10" #email="ngModel">
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="['email.errors.required']">
+                    Digite su email por favor
+                </div>
+                <div *ngIf="['email.errors.minlength']">
+                    email min lenght 4
+                </div>
+                <div *ngIf="['email.errors.maxlength']">
+                    email max lenght 10
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="!empleadoForm.form.valid">Guardar</button>
+    </form>
+</div>
